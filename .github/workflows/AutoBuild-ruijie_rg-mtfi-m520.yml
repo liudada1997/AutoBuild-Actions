@@ -92,6 +92,8 @@ jobs:
       run: |
         git clone -b $REPO_BRANCH $REPO_URL openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        mkdir openwrt/package/rooter
+        unzip rooter.zip -d openwrt/package/rooter/
         cd openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a > /dev/null 2>&1
@@ -118,8 +120,6 @@ jobs:
     - name: Compile
       run: |
         export Compile_Result=false
-        mkdir openwrt/package/rooter
-        unzip rooter.zip -d openwrt/package/rooter/
         cd openwrt
         source $GITHUB_WORKSPACE/Scripts/AutoBuild_Function.sh && Firmware-Diy_Other
         rm -rf ./tmp && ./scripts/feeds install -a > /dev/null 2>&1
