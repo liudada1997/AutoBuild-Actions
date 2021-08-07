@@ -6,7 +6,7 @@
 
 name: ruijie_rg-mtfi-m520
 
-### 以下内容请保持不变 (请修改下方: 环境变量设置)
+### 1以下内容请保持不变 (请修改下方: 环境变量设置)
 on:
   repository_dispatch:
   workflow_dispatch:
